@@ -41,10 +41,10 @@ class Grid:
         for r, row in enumerate(self.grid):
             for c, space in enumerate(row):
                 if space == "#":
-                    atoms.append([r,c])
+                    atoms.append([r, c])
 
         return atoms
-    
+
     def get_free_spaces(self):
         free_spaces = []
         for r, row in enumerate(self.grid):
@@ -72,6 +72,6 @@ class Grid:
 
     def print_grid(self):
         print("Dims: {0}x{1}".format(*self.dims))
-        print("  "+"".join([str(c) for c in range(self.dims[1])]))
+        print("  " + "".join([str(c) for c in range(self.dims[1])]))
         for r, row in enumerate(self.grid):
-            print(str(r)+" ", *row, sep="")
+            print(str(r) + " ", *row, sep="")
