@@ -24,7 +24,7 @@ class Grid:
         if isinstance(atoms, list) and len(atoms) > 0:
             for atom in atoms:
                 try:
-                    self.grid[atom[0] - 1][atom[1] - 1] = "#"
+                    self.grid[atom[0]][atom[1]] = "#"
                 except ValueError:
                     pass
 
@@ -32,7 +32,7 @@ class Grid:
         if isinstance(atoms, list) and len(atoms) > 0:
             for atom in atoms:
                 try:
-                    self.grid[atom[0] - 1][atom[1] - 1] = "."
+                    self.grid[atom[0]][atom[1]] = "."
                 except ValueError:
                     pass
 
@@ -41,7 +41,7 @@ class Grid:
         for r, row in enumerate(self.grid):
             for c, space in enumerate(row):
                 if space == "#":
-                    atoms.append([r+1,c+1])
+                    atoms.append([r,c])
 
         return atoms
     
@@ -50,7 +50,7 @@ class Grid:
         for r, row in enumerate(self.grid):
             for c, space in enumerate(row):
                 if space == ".":
-                    free_spaces.append([r+1, c+1])
+                    free_spaces.append([r, c])
 
         return free_spaces
 
@@ -72,6 +72,6 @@ class Grid:
 
     def print_grid(self):
         print("Dims: {0}x{1}".format(*self.dims))
-        print("  "+"".join([str(x+1) for x in range(self.dims[1])]))
+        print("  "+"".join([str(c) for c in range(self.dims[1])]))
         for r, row in enumerate(self.grid):
-            print(str(r+1)+" ", *row, sep="")
+            print(str(r)+" ", *row, sep="")
